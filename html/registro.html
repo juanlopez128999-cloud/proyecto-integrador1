@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crear cuenta | Biblioteca Inteligente</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --cafe: #8C7A6B;
+            --cafe-oscuro: #6F5E50;
+            --crema: #F5F2ED;
+            --arena: #D8CFC4;
+            --gris: #AFAFAF;
+            --blanco: #FFFFFF;
+            --texto: #29251F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--crema);
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 20px;
+            color: var(--texto);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+
+        .register-container {
+            width: 100%;
+            max-width: 1100px;
+            min-height: 650px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--blanco);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(60, 48, 38, 0.12);
+            animation: aparecer 0.8s ease;
+        }
+
+        /* PANEL IZQUIERDO */
+
+        .visual-panel {
+            background:
+                radial-gradient(circle at 80% 15%, rgba(255,255,255,0.15), transparent 30%),
+                linear-gradient(145deg, #9B8877, #6F5E50);
+            padding: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            color: var(--blanco);
+        }
+
+        .visual-panel::before,
+        .visual-panel::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .visual-panel::before {
+            width: 400px;
+            height: 400px;
+            top: 120px;
+            right: -180px;
+        }
+
+        .visual-panel::after {
+            width: 300px;
+            height: 300px;
+            bottom: -140px;
+            left: -120px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+        }
+
+        .brand-text span {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #E8DDD1;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 1;
+            margin: 45px 0;
+        }
+
+        .visual-label {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 9px 15px;
+            border-radius: 30px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .visual-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 4vw, 53px);
+            line-height: 1.15;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .visual-content h2 span {
+            color: #E9D9C7;
+            font-style: italic;
+        }
+
+        .visual-content p {
+            color: #F0E9E2;
+            font-size: 14px;
+            line-height: 1.9;
+            max-width: 370px;
+        }
+
+        .book-decoration {
+            margin-top: 35px;
+            width: 100%;
+            max-width: 320px;
+            min-height: 130px;
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .book-decoration span {
+            font-size: 55px;
+        }
+
+        .decoration-text {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .decoration-text strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+        }
+
+        .decoration-text small {
+            color: #E6DCD1;
+            font-size: 11px;
+        }
+
+        .visual-footer {
+            position: relative;
+            z-index: 1;
+            font-size: 11px;
+            color: #E4D9CE;
+            letter-spacing: 1px;
+        }
+
+        /* PANEL DERECHO */
+
+        .form-panel {
+            padding: 55px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-top {
+            margin-bottom: 35px;
+        }
+
+        .form-top span {
+            color: var(--cafe);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .form-top h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 37px;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+
+        .form-top p {
+            color: #888078;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* CAMPOS */
+
+        .form-group {
+            margin-bottom: 23px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #50483F;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 53px;
+            padding: 0 17px;
+            border: 1px solid #E1DAD2;
+            border-radius: 11px;
+            background: #FAF9F7;
+            outline: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            color: var(--texto);
+            transition: 0.3s;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--cafe);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(140, 122, 107, 0.10);
+        }
+
+        .input-wrapper input::placeholder {
+            color: #AAA39B;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--cafe);
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        /* INFORMACIÓN */
+
+        .password-info {
+            color: #999087;
+            font-size: 10px;
+            margin-top: 8px;
+        }
+
+        /* BOTÓN */
+
+        .register-button {
+            width: 100%;
+            height: 53px;
+            background: var(--cafe);
+            border: none;
+            border-radius: 11px;
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .register-button:hover {
+            background: var(--cafe-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(140, 122, 107, 0.2);
+        }
+
+        /* LOGIN */
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #888078;
+            font-size: 12px;
+        }
+
+        .login-link a {
+            color: var(--cafe);
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .login-link a:hover {
+            color: var(--cafe-oscuro);
+            text-decoration: underline;
+        }
+
+        .form-footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #EEEAE5;
+            text-align: center;
+            color: #AAA39B;
+            font-size: 10px;
+        }
+
+        /* ANIMACIÓN */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            .register-container {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+            }
+
+            .visual-panel {
+                min-height: 350px;
+                padding: 30px;
+            }
+
+            .visual-content {
+                margin: 35px 0;
+            }
+
+            .visual-content h2 {
+                font-size: 38px;
+            }
+
+            .book-decoration {
+                display: none;
+            }
+
+            .form-panel {
+                padding: 40px 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .register-container {
+                border-radius: 17px;
+            }
+
+            .visual-panel {
+                min-height: 320px;
+                padding: 25px;
+            }
+
+            .visual-content h2 {
+                font-size: 34px;
+            }
+
+            .form-panel {
+                padding: 35px 23px;
+            }
+
+            .form-top h1 {
+                font-size: 31px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="register-container">
+
+    
+
+        <section class="visual-panel">
+
+            <div class="brand">
+                <img src="/img/logo.png" alt="Logo Biblioteca">
+
+                <div class="brand-text">
+                    <strong>Biblioteca Inteligente</strong>
+                    <span>SEDE BELLO</span>
+                </div>
+            </div>
+
+            <div class="visual-content">
+
+                <span class="visual-label">
+                    TU ESPACIO DE LECTURA
+                </span>
+
+                <h2>
+                    Cada historia
+                    comienza con
+                    <span>una página.</span>
+                </h2>
+
+                <p>
+                    Forma parte de nuestra comunidad, descubre nuevos
+                    conocimientos y encuentra historias que transformen
+                    tu manera de ver el mundo.
+                </p>
+
+                <div class="book-decoration">
+                    <span>  <img src="/img/logo.png" alt="Logo Biblioteca"></span>
+
+                    <div class="decoration-text">
+                        <strong>Un mundo por descubrir</strong>
+                        <small>Conocimiento sin límites</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="visual-footer">
+                © 2026 BIBLIOTECA INTELIGENTE · SEDE BELLO
+            </div>
+
+        </section>
+
+
+
+        <section class="form-panel">
+
+            <div class="form-top">
+
+                <span>CREA TU PERFIL</span>
+
+                <h1>Crear cuenta</h1>
+
+                <p>
+                    Regístrate para acceder a los servicios
+                    y descubrir todo lo que nuestra biblioteca tiene para ti.
+                </p>
+
+            </div>
+
+            <form id="registroForm">
+
+                <div class="form-group">
+
+                    <label for="regEmail">
+                        Correo electrónico
+                    </label>
+
+                    <div class="input-wrapper">
+                        <input
+                            type="email"
+                            id="regEmail"
+                            placeholder="ejemplo@correo.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="regPassword">
+                        Contraseña
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="password"
+                            id="regPassword"
+                            placeholder="Crea una contraseña"
+                            minlength="6"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="mostrarPassword()"
+                            id="togglePassword"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+                    <p class="password-info">
+                        Utiliza al menos 6 caracteres.
+                    </p>
+
+                </div>
+
+                <button type="submit" class="register-button">
+                    Crear mi cuenta →
+                </button>
+
+                <div class="login-link">
+                    ¿Ya tienes una cuenta?
+                    <a href="index.html">Inicia sesión</a>
+                </div>
+
+            </form>
+
+            <div class="form-footer">
+                Biblioteca CESDE · Proyecto Académico 2026
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        function mostrarPassword() {
+
+            const password = document.getElementById("regPassword");
+            const boton = document.getElementById("togglePassword");
+
+            if (password.type === "password") {
+                password.type = "text";
+                boton.textContent = "Ocultar";
+            } else {
+                password.type = "password";
+                boton.textContent = "Mostrar";
+            }
+
+        }
+
+        // Registrar usuario
+
+        document.getElementById("registroForm").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const email = document.getElementById("regEmail").value.trim();
+            const password = document.getElementById("regPassword").value.trim();
+
+            if (email === "" || password === "") {
+                alert("Completa todos los campos.");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("La contraseña debe tener al menos 6 caracteres.");
+                return;
+            }
+
+            localStorage.setItem("usuario", email);
+            localStorage.setItem("clave", password);
+
+            alert("¡Cuenta creada correctamente!");
+
+            window.location.href = "rol.html";
+
+        });
+
+    </script>
+
+</body>
+</html>

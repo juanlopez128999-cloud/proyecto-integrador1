@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biblioteca Inteligente | Sede Bello</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- =================================
+         NAVEGACIÓN
+    ================================== -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <img src="/img/logo.png" alt="Logo Biblioteca">
+
+            <div class="logo-text">
+                <strong>BIBLIOTECA.</strong>
+                <span>SEDE BELLO · INTELIGENCIA Y CULTURA</span>
+            </div>
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="index.html" class="active">Inicio</a>
+
+            <a href="inventario.html">Inventario</a>
+
+            <a href="contacto.html">Contacto</a>
+
+        </nav>
+
+
+        <button class="admin-button" onclick="abrirLogin()">
+            <span>♙</span>
+            Administrador
+            <span class="admin-arrow">↗</span>
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- =================================
+             PORTADA PRINCIPAL
+        ================================== -->
+
+        <section class="hero">
+
+            <div class="hero-background"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    <span class="status-dot"></span>
+                    BIBLIOTECA CESDE
+                </div>
+
+
+                <h1>
+                    El conocimiento
+                    <span>no tiene límites.</span>
+                </h1>
+
+                
+                <p>
+                    Bienvenido a Biblioteca CESDE, un espacio
+                    donde la tecnología y la literatura se unen
+                    para transformar la experiencia de aprendizaje.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="inventario.html" class="main-button">
+                        Explorar inventario
+                        <span>→</span>
+                    </a>
+
+                    <a href="#servicios" class="secondary-button">
+                        Conocer el sistema
+                    </a>
+
+                </div>
+
+
+                <div class="hero-footer">
+
+                    <div class="hero-line"></div>
+
+                    <span>LECTURA · ORGANIZACIÓN · INNOVACIÓN</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="visual-circle"></div>
+
+                <div class="visual-card card-top">
+
+                    <span class="visual-icon">✦</span>
+
+                    <div>
+                        <strong>Inteligencia</strong>
+                        <p>Gestión organizada</p>
+                    </div>
+
+                </div>
+
+
+                <div class="visual-card card-bottom">
+
+                    <span class="visual-icon">▤</span>
+
+                    <div>
+                        <strong>Biblioteca digital</strong>
+                        <p>Todo en un solo lugar</p>
+                    </div>
+
+                </div>
+
+
+                <div class="visual-letter">
+    <img src="/img/logo.png" alt="Logo de Biblioteca CESDE">
+</div>
+
+            </div>
+
+            <div class="hero-index">01 / 04</div>
+
+        </section>
+
+
+        <!-- =================================
+             ESTADÍSTICAS
+        ================================== -->
+
+        <section class="stats-section">
+
+            <div class="stats-heading">
+
+                <span>EN CIFRAS</span>
+
+                <p>El sistema en un vistazo.</p>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <div class="stat-top">
+                        <span class="stat-icon">▤</span>
+                        <span class="stat-number">01</span>
+                    </div>
+
+                    <h2>12</h2>
+
+                    <p>Libros registrados</p>
+
+                    <div class="stat-indicator">
+                        <span></span>
+                        Colección bibliográfica
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-top">
+                        <span class="stat-icon">♙</span>
+                        <span class="stat-number">02</span>
+                    </div>
+
+                    <h2>45</h2>
+
+                    <p>Usuarios registrados</p>
+
+                    <div class="stat-indicator">
+                        <span></span>
+                        Comunidad bibliotecaria
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-top">
+                        <span class="stat-icon">↗</span>
+                        <span class="stat-number">03</span>
+                    </div>
+
+                    <h2>12</h2>
+
+                    <p>Préstamos disponibles</p>
+
+                    <div class="stat-indicator">
+                        <span></span>
+                        Capacidad disponible
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="stats-note">
+                * Cifras de demostración. No representan datos conectados a una base de datos.
+            </p>
+
+        </section>
+
+
+        <!-- =================================
+             SERVICIOS
+        ================================== -->
+
+        <section class="services" id="servicios">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">NUESTRA TECNOLOGÍA</span>
+
+                    <h2>Una biblioteca más <em>inteligente.</em></h2>
+
+                    <p>
+                        Herramientas diseñadas para simplificar
+                        la administración y mejorar la experiencia
+                        de nuestros usuarios.
+                    </p>
+                </div>
+
+                <span class="section-number">01 — 03</span>
+
+            </div>
+
+
+            <div class="features-grid">
+
+
+                <a href="inventario.html" class="feature">
+
+                    <div class="feature-top">
+                        <span class="feature-icon">▤</span>
+                        <span class="feature-arrow">↗</span>
+                    </div>
+
+                    <span class="feature-label">01 / ORGANIZACIÓN</span>
+
+                    <h3>Inventario inteligente</h3>
+
+                    <p>
+                        Consulta, explora y administra la colección
+                        bibliográfica de manera organizada.
+                    </p>
+
+                    <div class="feature-link">
+                        Explorar inventario →
+                    </div>
+
+                </a>
+
+
+                <div class="feature">
+
+                    <div class="feature-top">
+                        <span class="feature-icon">◇</span>
+                        <span class="feature-arrow">↗</span>
+                    </div>
+
+                    <span class="feature-label">02 / PROTECCIÓN</span>
+
+                    <h3>Seguridad y control</h3>
+
+                    <p>
+                        Accesos administrativos y validaciones
+                        para mantener una gestión organizada.
+                    </p>
+
+                    <div class="feature-link">
+                        Gestión segura
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-top">
+                        <span class="feature-icon">ϟ</span>
+                        <span class="feature-arrow">↗</span>
+                    </div>
+
+                    <span class="feature-label">03 / EFICIENCIA</span>
+
+                    <h3>Gestión simplificada</h3>
+
+                    <p>
+                        Facilita el control de préstamos,
+                        devoluciones y disponibilidad de libros.
+                    </p>
+
+                    <div class="feature-link">
+                        Conoce el sistema
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             ACTIVIDAD RECIENTE
+        ================================== -->
+
+        <section class="activity-section">
+
+            <div class="activity-intro">
+
+                <span class="section-label">SEGUIMIENTO DEL SISTEMA</span>
+
+                <h2>Actividad <em>reciente.</em></h2>
+
+                <p>
+                    Un espacio para visualizar los movimientos
+                    realizados dentro de la biblioteca.
+                </p>
+
+                <a href="inventario.html" class="activity-button">
+                    Ir al inventario →
+                </a>
+
+            </div>
+
+
+            <div class="activity-panel">
+
+                <div class="activity-header">
+
+                    <div>
+                        <span class="activity-status"></span>
+                        <strong>Últimos movimientos</strong>
+                    </div>
+
+                    <span class="activity-tag">EJEMPLOS</span>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">↗</div>
+
+                        <div class="activity-info">
+                            <strong>Préstamo registrado</strong>
+                            <p>Juan realizó un préstamo de "El extranjero".</p>
+                        </div>
+
+                        <span class="activity-time">01</span>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">＋</div>
+
+                        <div class="activity-info">
+                            <strong>Nuevo libro agregado</strong>
+                            <p>Se agregó "El principito" a la colección.</p>
+                        </div>
+
+                        <span class="activity-time">02</span>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">✓</div>
+
+                        <div class="activity-info">
+                            <strong>Devolución completada</strong>
+                            <p>María realizó la devolución de un libro.</p>
+                        </div>
+
+                        <span class="activity-time">03</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-footer">
+                    <span>Biblioteca Inteligente</span>
+                    <span>SEDE BELLO</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             BANNER FINAL
+        ================================== -->
+
+        <section class="final-banner">
+
+            <div>
+
+                <span>DESCUBRE. APRENDE. TRANSFORMA.</span>
+
+                <h2>
+                    Tu próxima gran historia
+                    comienza aquí.
+                </h2>
+
+                <p>
+                    Explora nuestra colección y encuentra
+                    nuevas formas de aprender.
+                </p>
+
+            </div>
+
+            <a href="inventario.html">
+                Descubrir libros <span>↗</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+
+            <strong>BIBLIOTECA.</strong>
+
+            <span>SEDE BELLO</span>
+
+        </div>
+
+
+        <p>
+            Tecnología y conocimiento al servicio de la comunidad.
+        </p>
+
+
+        <div class="footer-copy">
+            © 2026 Biblioteca Inteligente.
+            Proyecto académico.
+        </div>
+
+    </footer>
+
+
+    <!-- =================================
+         VENTANA DE ACCESO ADMINISTRADOR
+    ================================== -->
+
+    <div class="login-overlay" id="loginOverlay">
+
+        <div class="login-modal">
+
+            <button class="close-modal" onclick="cerrarLogin()">
+                ×
+            </button>
+
+            <div class="login-symbol">B.</div>
+
+            <span class="section-label">ACCESO RESTRINGIDO</span>
+
+            <h2>Panel administrativo</h2>
+
+            <p>
+                Ingresa tus credenciales para acceder
+                al área de administración.
+            </p>
+
+
+            <form id="adminForm">
+
+                <label for="adminEmail">Usuario</label>
+
+                <input
+                    type="text"
+                    id="adminEmail"
+                    placeholder="Ingresa tu usuario"
+                    required
+                >
+
+                <label for="adminPass">Contraseña</label>
+
+                <input
+                    type="password"
+                    id="adminPass"
+                    placeholder="Ingresa tu contraseña"
+                    required
+                >
+
+                <p class="login-error" id="loginError">
+                    Usuario o contraseña incorrectos.
+                </p>
+
+                <button type="submit" class="login-submit">
+                    Iniciar sesión →
+                </button>
+
+            </form>
+
+            <span class="login-footer">
+                BIBLIOTECA INTELIGENTE · SEDE BELLO
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script>
+
+        const overlay = document.getElementById("loginOverlay");
+
+        function abrirLogin() {
+            overlay.classList.add("show");
+            document.getElementById("adminEmail").focus();
+        }
+
+        function cerrarLogin() {
+            overlay.classList.remove("show");
+            document.getElementById("loginError").style.display = "none";
+        }
+
+        overlay.addEventListener("click", function(event) {
+
+            if (event.target === overlay) {
+                cerrarLogin();
+            }
+
+        });
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                cerrarLogin();
+            }
+
+        });
+
+
+        document.getElementById("adminForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const usuario = document.getElementById("adminEmail").value;
+            const contraseña = document.getElementById("adminPass").value;
+
+            /*
+              IMPORTANTE:
+              Este ejemplo es una demostración visual.
+              Para seguridad real, valida las credenciales
+              desde un servidor y nunca guardes contraseñas
+              en el JavaScript del navegador.
+            */
+
+            const adminUsuario = "CAMBIA_TU_USUARIO";
+            const adminContraseña = "CAMBIA_TU_CONTRASEÑA";
+
+            if (
+                usuario === adminUsuario &&
+                contraseña === adminContraseña
+            ) {
+
+                window.location.href = "administrador.html";
+
+            } else {
+
+                document.getElementById("loginError").style.display = "block";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

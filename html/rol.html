@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Acceso | Biblioteca Inteligente</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fondo: #100f0e;
+            --dorado: #c6a16a;
+            --dorado-claro: #e6c895;
+            --blanco: #f7f2e9;
+            --gris: #aaa094;
+            --borde: rgba(198, 161, 106, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--blanco);
+            background:
+                radial-gradient(circle at 15% 20%, rgba(145, 102, 55, 0.20), transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(145, 102, 55, 0.14), transparent 30%),
+                var(--fondo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 18px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* DECORACIÓN */
+
+        .background-circle {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(198, 161, 106, 0.10);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .circle-one {
+            top: -250px;
+            left: -180px;
+        }
+
+        .circle-two {
+            bottom: -280px;
+            right: -170px;
+            width: 550px;
+            height: 550px;
+        }
+
+        /* CONTENEDOR */
+
+        .main-container {
+            width: 100%;
+            max-width: 1050px;
+            position: relative;
+            z-index: 1;
+            animation: aparecer 0.9s ease;
+        }
+
+        /* MARCA */
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 45px;
+            text-align: center;
+        }
+
+        .brand img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 20px rgba(198, 161, 106, 0.22));
+        }
+
+        .brand h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .brand span {
+            color: var(--dorado-claro);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 7px;
+        }
+
+        /* PRESENTACIÓN */
+
+        .intro {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .intro-label {
+            display: inline-block;
+            color: var(--dorado-claro);
+            font-size: 10px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            border: 1px solid var(--borde);
+            border-radius: 30px;
+            padding: 9px 17px;
+            margin-bottom: 20px;
+        }
+
+        .intro h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(35px, 5vw, 55px);
+            font-weight: 500;
+            line-height: 1.15;
+        }
+
+        .intro h1 span {
+            color: var(--dorado-claro);
+            font-style: italic;
+        }
+
+        .intro p {
+            color: var(--gris);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-top: 15px;
+        }
+
+        /* TARJETAS */
+
+        .roles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .role-card {
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            padding: 35px;
+            min-height: 300px;
+            background: linear-gradient(145deg, rgba(40, 36, 30, 0.95), rgba(23, 21, 19, 0.95));
+            border: 1px solid var(--borde);
+            border-radius: 22px;
+            transition: 0.4s ease;
+        }
+
+        .role-card::before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            right: -100px;
+            top: -100px;
+            background: rgba(198, 161, 106, 0.10);
+            border-radius: 50%;
+            transition: 0.5s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-9px);
+            border-color: var(--dorado);
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+        }
+
+        .role-card:hover::before {
+            transform: scale(1.5);
+        }
+
+        .role-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .role-icon {
+            width: 65px;
+            height: 65px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            background: rgba(198, 161, 106, 0.12);
+            border: 1px solid var(--borde);
+            color: var(--dorado-claro);
+            font-size: 29px;
+        }
+
+        .role-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 35px;
+            color: rgba(230, 200, 149, 0.20);
+        }
+
+        .role-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .role-card p {
+            color: var(--gris);
+            font-size: 13px;
+            line-height: 1.8;
+            min-height: 47px;
+        }
+
+        .role-button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px 18px;
+            border: 1px solid var(--dorado);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--dorado-claro);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .role-button:hover {
+            background: var(--dorado-claro);
+            color: #19140e;
+        }
+
+        .admin-card {
+            background: linear-gradient(145deg, rgba(53, 42, 29, 0.85), rgba(23, 21, 19, 0.98));
+        }
+
+        .admin-card .role-icon {
+            background: rgba(198, 161, 106, 0.18);
+        }
+
+        /* INFORMACIÓN INFERIOR */
+
+        .bottom-info {
+            text-align: center;
+            margin-top: 40px;
+            color: #82776a;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .bottom-info span {
+            color: var(--dorado);
+        }
+
+        /* MODAL ADMINISTRADOR */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 20;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 410px;
+            background: #1b1916;
+            border: 1px solid var(--borde);
+            border-radius: 22px;
+            padding: 35px;
+            position: relative;
+            animation: aparecer 0.35s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: var(--gris);
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .login-logo h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            margin-top: 10px;
+        }
+
+        .login-logo p {
+            color: var(--gris);
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dorado-claro);
+            font-size: 12px;
+            margin-bottom: 9px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            background: #11100f;
+            border: 1px solid #39332b;
+            border-radius: 10px;
+            outline: none;
+            color: white;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--dorado);
+            box-shadow: 0 0 0 3px rgba(198, 161, 106, 0.10);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(120deg, #e6c895, #b88b4c);
+            color: #17130e;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(198, 161, 106, 0.2);
+        }
+
+        .error-message {
+            display: none;
+            color: #f19b91;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* ANIMACIONES */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 650px) {
+            .roles {
+                grid-template-columns: 1fr;
+            }
+
+            .brand {
+                margin-bottom: 30px;
+            }
+
+            .intro {
+                margin-bottom: 30px;
+            }
+
+            .role-card {
+                min-height: 275px;
+                padding: 28px;
+            }
+
+            .intro p {
+                max-width: 330px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+/* PALETA GENERAL DE LA BIBLIOTECA */
+
+:root {
+    --fondo: #F5F2ED;
+    --dorado: #8C7A6B;
+    --dorado-claro: #6F5E50;
+    --blanco: #FFFFFF;
+    --gris: #77716B;
+    --borde: rgba(140, 122, 107, 0.25);
+}
+
+/* FONDO */
+
+body {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(216, 207, 196, 0.55), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(175, 175, 175, 0.20), transparent 35%),
+        #F5F2ED;
+    color: #29251F;
+}
+
+/* CÍRCULOS DECORATIVOS */
+
+.background-circle {
+    border-color: rgba(140, 122, 107, 0.15);
+}
+
+/* LOGO Y MARCA */
+
+.brand h2 {
+    color: #29251F;
+}
+
+.brand span {
+    color: #8C7A6B;
+}
+
+.brand img {
+    filter: none;
+}
+
+/* PRESENTACIÓN */
+
+.intro-label {
+    color: #8C7A6B;
+    border-color: rgba(140, 122, 107, 0.35);
+    background: rgba(216, 207, 196, 0.25);
+}
+
+.intro h1 {
+    color: #29251F;
+}
+
+.intro h1 span {
+    color: #8C7A6B;
+}
+
+.intro p {
+    color: #77716B;
+}
+
+/* TARJETAS DE SELECCIÓN */
+
+.role-card,
+.admin-card {
+    background: linear-gradient(145deg, #FFFFFF, #F0EBE4);
+    border-color: rgba(140, 122, 107, 0.25);
+    box-shadow: 0 12px 35px rgba(65, 53, 42, 0.07);
+}
+
+.role-card:hover {
+    border-color: #8C7A6B;
+    box-shadow: 0 18px 45px rgba(65, 53, 42, 0.13);
+}
+
+.role-card::before {
+    background: rgba(216, 207, 196, 0.45);
+}
+
+.role-icon {
+    color: #8C7A6B;
+    background: #EAE3D9;
+    border-color: rgba(140, 122, 107, 0.25);
+}
+
+.role-number {
+    color: rgba(140, 122, 107, 0.35);
+}
+
+.role-card h2 {
+    color: #29251F;
+}
+
+.role-card p {
+    color: #77716B;
+}
+
+/* BOTONES */
+
+.role-button {
+    color: #FFFFFF;
+    background: #8C7A6B;
+    border-color: #8C7A6B;
+}
+
+.role-button:hover {
+    background: #6F5E50;
+    color: #FFFFFF;
+}
+
+/* INFORMACIÓN INFERIOR */
+
+.bottom-info {
+    color: #77716B;
+}
+
+.bottom-info span {
+    color: #8C7A6B;
+}
+
+/* VENTANA DE ADMINISTRADOR */
+
+.modal-overlay {
+    background: rgba(41, 37, 31, 0.55);
+}
+
+.login-box {
+    background: #FFFFFF;
+    border-color: rgba(140, 122, 107, 0.3);
+    box-shadow: 0 20px 60px rgba(41, 37, 31, 0.18);
+}
+
+.close-modal {
+    color: #8C7A6B;
+}
+
+.login-logo h2 {
+    color: #29251F;
+}
+
+.login-logo p {
+    color: #77716B;
+}
+
+.form-group label {
+    color: #6F5E50;
+}
+
+.form-group input {
+    background: #F5F2ED;
+    border-color: #D8CFC4;
+    color: #29251F;
+}
+
+.form-group input::placeholder {
+    color: #A49A90;
+}
+
+.form-group input:focus {
+    border-color: #8C7A6B;
+    box-shadow: 0 0 0 3px rgba(140, 122, 107, 0.12);
+}
+
+.login-button {
+    background: #8C7A6B;
+    color: #FFFFFF;
+}
+
+.login-button:hover {
+    background: #6F5E50;
+    box-shadow: 0 8px 25px rgba(140, 122, 107, 0.2);
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="background-circle circle-one"></div>
+    <div class="background-circle circle-two"></div>
+
+    <main class="main-container">
+
+        <div class="brand">
+            <img src="/img/logo.png" alt="Logo Biblioteca Inteligente">
+            <h2>Biblioteca Inteligente</h2>
+            <span>Sede Bello · Colombia</span>
+        </div>
+
+        <section class="intro">
+            <span class="intro-label">PLATAFORMA DIGITAL</span>
+
+            <h1>
+                Un espacio para cada
+                <span>experiencia.</span>
+            </h1>
+
+            <p>
+                Selecciona tu perfil para ingresar a la plataforma
+                y disfrutar de los servicios de nuestra biblioteca.
+            </p>
+        </section>
+
+        <section class="roles">
+
+            <!-- USUARIO -->
+
+            <article class="role-card">
+                <div class="role-top">
+                    <div class="role-icon">♙</div>
+                    <span class="role-number">01</span>
+                </div>
+
+                <h2>Acceso Usuario</h2>
+
+                <p>
+                    Consulta nuestro inventario, descubre nuevos libros
+                    y conoce los servicios disponibles.
+                </p>
+
+                <button class="role-button" onclick="irUsuario()">
+                    Ingresar como usuario <span>→</span>
+                </button>
+            </article>
+
+            <!-- ADMINISTRADOR -->
+
+            <article class="role-card admin-card">
+                <div class="role-top">
+                    <div class="role-icon">♜</div>
+                    <span class="role-number">02</span>
+                </div>
+
+                <h2>Acceso Administrador</h2>
+
+                <p>
+                    Administra los recursos, supervisa el inventario
+                    y controla las funciones de la biblioteca.
+                </p>
+
+                <button class="role-button" onclick="abrirLogin()">
+                    Ingresar como administrador <span>→</span>
+                </button>
+            </article>
+
+        </section>
+
+        <div class="bottom-info">
+            <span>✦</span> BIBLIOTECA INTELIGENTE
+            &nbsp; · &nbsp; PROYECTO ACADÉMICO 2026
+            <span>✦</span>
+        </div>
+
+    </main>
+
+    <!-- VENTANA DE ACCESO ADMINISTRADOR -->
+
+    <div class="modal-overlay" id="modalLogin" onclick="cerrarDesdeFondo(event)">
+
+        <div class="login-box">
+
+            <button class="close-modal" onclick="cerrarLogin()">×</button>
+
+            <div class="login-logo">
+                <img src="img/logo.png" alt="Logo">
+                <h2>Acceso privado</h2>
+                <p>Ingresa tus credenciales de administrador.</p>
+            </div>
+
+            <form onsubmit="validarAdmin(event)">
+
+                <div class="form-group">
+                    <label for="correo">Usuario o correo</label>
+                    <input type="text" id="correo" placeholder="Ingresa tu usuario" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" placeholder="Ingresa tu contraseña" required>
+                </div>
+
+                <button type="submit" class="login-button">
+                    Iniciar sesión →
+                </button>
+
+                <p class="error-message" id="error">
+                    Usuario o contraseña incorrectos.
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        function irUsuario() {
+            window.location.href = "usuario.html";
+        }
+
+        function abrirLogin() {
+            document.getElementById("modalLogin").classList.add("active");
+            document.getElementById("error").style.display = "none";
+        }
+
+        function cerrarLogin() {
+            document.getElementById("modalLogin").classList.remove("active");
+        }
+
+        function cerrarDesdeFondo(event) {
+            if (event.target.id === "modalLogin") {
+                cerrarLogin();
+            }
+        }
+
+        function validarAdmin(event) {
+            event.preventDefault();
+
+            // Configura estas credenciales para la demostración.
+            const adminEmail = "CAMBIA_TU_USUARIO";
+            const adminPass = "CAMBIA_TU_CONTRASEÑA";
+
+            const email = document.getElementById("correo").value;
+            const pass = document.getElementById("contrasena").value;
+
+            if (email === adminEmail && pass === adminPass) {
+                window.location.href = "administrador.html";
+            } else {
+                document.getElementById("error").style.display = "block";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seleccionar rol</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    background: #8C7A6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .card-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  .btn-custom {
+    background: #8C7A6B;
+    color: white;
+    border: none;
+  }
+
+  .btn-custom:hover {
+    background: #6f5e50;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card-box">
+
+  <h3 class="mb-4">¿Cómo deseas ingresar?</h3>
+
+  <button class="btn btn-custom w-100 mb-3" onclick="irUsuario()">
+    👤 Ingresar como Usuario
+  </button>
+
+  <button class="btn btn-dark w-100" onclick="irAdmin()">
+    🛠️ Ingresar como Administrador
+  </button>
+
+</div>
+
+<script>
+
+function irUsuario() {
+  window.location.href = "usuario.html";
+}
+
+function irAdmin() {
+
+  const adminEmail = "TU_USUARIO_ADMIN";
+  const adminPass = "TU_CONTRASEÑA_ADMIN";
+
+  const email = prompt("Ingrese correo:");
+  const pass = prompt("Ingrese contraseña:");
+
+  if (email === adminEmail && pass === adminPass) {
+
+    alert("Bienvenido administrador");
+
+    window.location.href = "administrador.html";
+
+  } else {
+
+    alert("Acceso denegado");
+
+  }
+}
+
+</script>
+
+</body>
+</html>
