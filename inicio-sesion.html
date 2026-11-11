@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Crear cuenta | Biblioteca Inteligente</title>
+    <title>Iniciar sesión | Biblioteca CESDE</title>
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
@@ -16,8 +16,6 @@
             --cafe: #8C7A6B;
             --cafe-oscuro: #6F5E50;
             --crema: #F5F2ED;
-            --arena: #D8CFC4;
-            --gris: #AFAFAF;
             --blanco: #FFFFFF;
             --texto: #29251F;
         }
@@ -41,39 +39,40 @@
 
         /* CONTENEDOR PRINCIPAL */
 
-        .register-container {
+        .login-container {
             width: 100%;
-            max-width: 1100px;
-            min-height: 650px;
+            max-width: 1050px;
+            min-height: 620px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            background: var(--blanco);
+            background: white;
             border-radius: 25px;
             overflow: hidden;
             box-shadow: 0 25px 80px rgba(60, 48, 38, 0.12);
-            animation: aparecer 0.8s ease;
+            animation: aparecer .8s ease;
         }
 
         /* PANEL IZQUIERDO */
 
         .visual-panel {
             background:
-                radial-gradient(circle at 80% 15%, rgba(255,255,255,0.15), transparent 30%),
+                radial-gradient(circle at 80% 15%, rgba(255,255,255,.15), transparent 30%),
                 linear-gradient(145deg, #9B8877, #6F5E50);
+
             padding: 45px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            color: var(--blanco);
+            color: white;
         }
 
         .visual-panel::before,
         .visual-panel::after {
             content: "";
             position: absolute;
-            border: 1px solid rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,.16);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -91,6 +90,8 @@
             bottom: -140px;
             left: -120px;
         }
+
+        /* LOGO */
 
         .brand {
             display: flex;
@@ -122,6 +123,7 @@
             color: #E8DDD1;
         }
 
+        
         .visual-content {
             position: relative;
             z-index: 1;
@@ -130,7 +132,7 @@
 
         .visual-label {
             display: inline-block;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,.3);
             padding: 9px 15px;
             border-radius: 30px;
             font-size: 10px;
@@ -158,14 +160,16 @@
             max-width: 370px;
         }
 
+        /* DECORACIÓN */
+
         .book-decoration {
             margin-top: 35px;
             width: 100%;
             max-width: 320px;
             min-height: 130px;
-            border: 1px solid rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,.22);
             border-radius: 18px;
-            background: rgba(255,255,255,0.10);
+            background: rgba(255,255,255,.10);
             backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
@@ -173,8 +177,10 @@
             gap: 20px;
         }
 
-        .book-decoration span {
-            font-size: 55px;
+        .book-decoration img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
         }
 
         .decoration-text {
@@ -223,7 +229,7 @@
 
         .form-top h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 37px;
+            font-size: 39px;
             font-weight: 600;
             margin: 12px 0;
         }
@@ -263,18 +269,20 @@
             font-family: 'DM Sans', sans-serif;
             font-size: 13px;
             color: var(--texto);
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .input-wrapper input:focus {
             border-color: var(--cafe);
             background: white;
-            box-shadow: 0 0 0 4px rgba(140, 122, 107, 0.10);
+            box-shadow: 0 0 0 4px rgba(140,122,107,.10);
         }
 
         .input-wrapper input::placeholder {
             color: #AAA39B;
         }
+
+        /* MOSTRAR CONTRASEÑA */
 
         .password-toggle {
             position: absolute;
@@ -289,17 +297,8 @@
             font-family: inherit;
         }
 
-        /* INFORMACIÓN */
-
-        .password-info {
-            color: #999087;
-            font-size: 10px;
-            margin-top: 8px;
-        }
-
-        /* BOTÓN */
-
-        .register-button {
+    
+        .login-button {
             width: 100%;
             height: 53px;
             background: var(--cafe);
@@ -310,33 +309,58 @@
             font-size: 13px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            transition: .3s;
             margin-top: 10px;
         }
 
-        .register-button:hover {
+        .login-button:hover {
             background: var(--cafe-oscuro);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(140, 122, 107, 0.2);
+            box-shadow: 0 10px 25px rgba(140,122,107,.2);
         }
 
-        /* LOGIN */
+        /* MENSAJES */
 
-        .login-link {
+        .mensaje {
+            display: none;
+            padding: 13px;
+            margin-top: 18px;
+            border-radius: 10px;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .mensaje.error {
+            display: block;
+            background: #FCE8E6;
+            color: #B3261E;
+            border: 1px solid #F5C2BE;
+        }
+
+        .mensaje.exito {
+            display: block;
+            background: #E7F4E8;
+            color: #276738;
+            border: 1px solid #B9DFC0;
+        }
+
+        /* ENLACE REGISTRO */
+
+        .register-link {
             text-align: center;
             margin-top: 25px;
             color: #888078;
             font-size: 12px;
         }
 
-        .login-link a {
+        .register-link a {
             color: var(--cafe);
             font-weight: 700;
             text-decoration: none;
-            transition: 0.3s;
         }
 
-        .login-link a:hover {
+        .register-link a:hover {
             color: var(--cafe-oscuro);
             text-decoration: underline;
         }
@@ -367,7 +391,8 @@
         /* RESPONSIVE */
 
         @media (max-width: 850px) {
-            .register-container {
+
+            .login-container {
                 grid-template-columns: 1fr;
                 max-width: 520px;
             }
@@ -395,11 +420,12 @@
         }
 
         @media (max-width: 480px) {
+
             body {
                 padding: 15px;
             }
 
-            .register-container {
+            .login-container {
                 border-radius: 17px;
             }
 
@@ -419,103 +445,116 @@
             .form-top h1 {
                 font-size: 31px;
             }
+
         }
 
     </style>
+
 </head>
 
 <body>
 
-    <main class="register-container">
+    <main class="login-container">
 
-    
+        <!-- PANEL IZQUIERDO -->
 
         <section class="visual-panel">
 
             <div class="brand">
+
                 <img src="/img/logo.png" alt="Logo Biblioteca">
 
                 <div class="brand-text">
-                    <strong>Biblioteca Inteligente</strong>
+                    <strong>Biblioteca CESDE</strong>
                     <span>SEDE BELLO</span>
                 </div>
+
             </div>
 
             <div class="visual-content">
 
                 <span class="visual-label">
-                    TU ESPACIO DE LECTURA
+                    BIENVENIDO DE NUEVO
                 </span>
 
                 <h2>
-                    Cada historia
-                    comienza con
-                    <span>una página.</span>
+                    Las historias
+                    continúan
+                    <span>aquí.</span>
                 </h2>
 
                 <p>
-                    Forma parte de nuestra comunidad, descubre nuevos
-                    conocimientos y encuentra historias que transformen
-                    tu manera de ver el mundo.
+                    Ingresa a tu cuenta y continúa explorando
+                    nuevos conocimientos. Tu próxima historia
+                    está esperando por ti.
                 </p>
 
                 <div class="book-decoration">
-                    <span>  <img src="/img/logo.png" alt="Logo Biblioteca"></span>
+
+                    <img src="/img/logo.png" alt="Biblioteca">
 
                     <div class="decoration-text">
                         <strong>Un mundo por descubrir</strong>
                         <small>Conocimiento sin límites</small>
                     </div>
+
                 </div>
 
             </div>
 
             <div class="visual-footer">
-                © 2026 BIBLIOTECA INTELIGENTE · SEDE BELLO
+                © 2026 BIBLIOTECA CESDE · SEDE BELLO
             </div>
 
         </section>
 
 
+        <!-- PANEL DERECHO -->
 
         <section class="form-panel">
 
             <div class="form-top">
 
-                <span>CREA TU PERFIL</span>
+                <span>ACCEDE A TU PERFIL</span>
 
-                <h1>Crear cuenta</h1>
+                <h1>Iniciar sesión</h1>
 
                 <p>
-                    Regístrate para acceder a los servicios
-                    y descubrir todo lo que nuestra biblioteca tiene para ti.
+                    Ingresa el correo electrónico y la contraseña
+                    que utilizaste al crear tu cuenta.
                 </p>
 
             </div>
 
-            <form id="registroForm">
+
+            <!-- FORMULARIO -->
+
+            <form id="loginForm">
 
                 <div class="form-group">
 
-                    <label for="regEmail">
+                    <label for="loginEmail">
                         Correo electrónico
                     </label>
 
                     <div class="input-wrapper">
+
                         <input
                             type="email"
-                            id="regEmail"
+                            id="loginEmail"
                             placeholder="ejemplo@correo.com"
                             autocomplete="email"
                             required
                         >
+
                     </div>
 
                 </div>
 
+
                 <div class="form-group">
 
-                    <label for="regPassword">
+                    <label for="loginPassword">
                         Contraseña
                     </label>
 
@@ -523,17 +562,15 @@
 
                         <input
                             type="password"
-                            id="regPassword"
-                            placeholder="Crea una contraseña"
-                            minlength="6"
-                            autocomplete="new-password"
+                            id="loginPassword"
+                            placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password"
                             required
                         >
 
                         <button
                             type="button"
                             class="password-toggle"
-                            onclick="mostrarPassword()"
                             id="togglePassword"
                         >
                             Mostrar
@@ -541,22 +578,32 @@
 
                     </div>
 
-                    <p class="password-info">
-                        Utiliza al menos 6 caracteres.
-                    </p>
-
                 </div>
 
-                <button type="submit" class="register-button">
-                    Crear mi cuenta →
+
+                <button type="submit" class="login-button">
+                    Iniciar sesión →
                 </button>
 
-                <div class="login-link">
-                    ¿Ya tienes una cuenta?
-                    <a href="index.html">Inicia sesión</a>
-                </div>
+                <!-- MENSAJES -->
+
+                <div id="mensaje" class="mensaje"></div>
 
             </form>
+
+
+            <!-- ENLACE AL REGISTRO -->
+
+            <div class="register-link">
+
+                ¿Todavía no tienes una cuenta?
+
+                <a href="registro.html">
+                    Crear cuenta
+                </a>
+
+            </div>
+
 
             <div class="form-footer">
                 Biblioteca CESDE · Proyecto Académico 2026
@@ -566,52 +613,10 @@
 
     </main>
 
-    <script>
 
-        function mostrarPassword() {
+    <!-- JAVASCRIPT -->
 
-            const password = document.getElementById("regPassword");
-            const boton = document.getElementById("togglePassword");
-
-            if (password.type === "password") {
-                password.type = "text";
-                boton.textContent = "Ocultar";
-            } else {
-                password.type = "password";
-                boton.textContent = "Mostrar";
-            }
-
-        }
-
-        // Registrar usuario
-
-        document.getElementById("registroForm").addEventListener("submit", function(e) {
-
-            e.preventDefault();
-
-            const email = document.getElementById("regEmail").value.trim();
-            const password = document.getElementById("regPassword").value.trim();
-
-            if (email === "" || password === "") {
-                alert("Completa todos los campos.");
-                return;
-            }
-
-            if (password.length < 6) {
-                alert("La contraseña debe tener al menos 6 caracteres.");
-                return;
-            }
-
-            localStorage.setItem("usuario", email);
-            localStorage.setItem("clave", password);
-
-            alert("¡Cuenta creada correctamente!");
-
-            window.location.href = "rol.html";
-
-        });
-
-    </script>
+    <script src="/js/inicio-sesion.js"></script>
 
 </body>
 </html>

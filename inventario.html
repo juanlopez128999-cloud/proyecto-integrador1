@@ -1,171 +1,414 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cátalogo de libros</title>
-    <link rel="stylesheet" href="css/estiloslat.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <title>Biblioteca | Colección Literaria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/estiloslat.css">
 </head>
+
 <body>
-    <div id="header">
-        <div id="contHeader">
-            <div id="contLogo">
-                <img src="img/logo.png" alt="">
+
+    <!-- NAVEGACIÓN -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="/img/logo.png" alt="Logo de la biblioteca">
+            <div>
+                <strong>BIBLIOTECA CESDE</strong>
+                <span>SEDE BELLO · CULTURA Y CONOCIMIENTO</span>
             </div>
-            <div id="contTexto">
+        </a>
+
+        <nav class="navigation">
+            <a href="usuario.html">Inicio</a>
+            <a href="inventario.html">Inventario</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+    </header>
+
+
+    <!-- PORTADA PRINCIPAL -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    <span class="dot"></span>
+                    UN UNIVERSO DE HISTORIAS
+                </span>
+
+                <h1>
+                    Cada libro es
+                    <em>una puerta</em>
+                    a otro mundo.
+                </h1>
+
                 <p>
-                    Biblioteca
+                    Explora nuestra colección literaria y descubre
+                    historias, ideas y conocimientos que merecen
+                    ser encontrados.
                 </p>
-                <p>
-                    Sede bello
-                </p>
+
+                <div class="hero-actions">
+                    <a href="#coleccion" class="primary-button">
+                        Descubrir colección <span>→</span>
+                    </a>
+
+                    <span class="hero-note">
+                        Literatura · Cultura · Conocimiento
+                    </span>
+                </div>
+
             </div>
-        </div>
-       <nav>
-            <ul id="lista">
-                <li class="item" >
-                    <a href="index.html" class="enlace">
-                        Inicio
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="inventario.html" class="enlace">
-                        Inventario
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="contacto.html" class="enlace">
-                        Contacto
-                    </a>
-                </li>
-            </ul>
-       </nav>
-    </div>
-    <div id="contLibros">
-        <div class="card">
-                    <img src="img/libros/25 Libros que la gente finge haber leido.jpg" alt="">
-                    <div class="genero">
-                        <p>Novela</p>
+
+            
+            <div class="hero-decoration">
+                <div class="hero-circle"></div>
+                <div class="hero-caption">
+                    
+                    <span>✦</span>
+                    Biblioteca Sede Bello
+                </div>
+            </div>
+
+          <div class="visual-letter">
+    <img src="/img/logo.png" alt="Logo de Biblioteca ">
+</div>
+
+        </section>
+
+
+        <!-- ESTADÍSTICAS -->
+        <section class="statistics">
+
+            <div class="stat">
+                <strong>12</strong>
+                <span>OBRAS DESTACADAS</span>
+            </div>
+
+            <div class="stat">
+                <strong>08+</strong>
+                <span>GÉNEROS LITERARIOS</span>
+            </div>
+
+            <div class="stat">
+                <strong>∞</strong>
+                <span>HISTORIAS POR DESCUBRIR</span>
+            </div>
+
+            <div class="stat-message">
+                El conocimiento nunca ocupa demasiado espacio.
+            </div>
+
+        </section>
+
+
+        <!-- COLECCIÓN -->
+        <section class="collection" id="coleccion">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">NUESTRA SELECCIÓN</span>
+                    <h2>Explora la colección<span>.</span></h2>
+                    <p>Obras que trascienden generaciones y despiertan nuevas perspectivas.</p>
+                </div>
+
+                <span class="collection-count">12 LIBROS DISPONIBLES</span>
+
+            </div>
+
+
+            <!-- BUSCADOR -->
+            <div class="search-area">
+
+                <div class="search-box">
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="text"
+                        id="buscador"
+                        placeholder="Buscar por título, autor o género..."
+                        autocomplete="off"
+                    >
+
+                    <span class="search-shortcut">BUSCAR</span>
+                </div>
+
+                <select id="filtroGenero">
+                    <option value="todos">Todos los géneros</option>
+                    <option value="novela">Novela</option>
+                    <option value="infantil">Literatura infantil</option>
+                    <option value="poesia">Poesía épica</option>
+                    <option value="ficcion">Ficción</option>
+                    <option value="filosofia">Filosofía</option>
+                    <option value="autobiografia">Autobiografía</option>
+                    <option value="teatro">Teatro</option>
+                </select>
+
+            </div>
+
+
+            <!-- LIBROS -->
+            <div class="books-grid" id="contenedorLibros">
+
+                <article class="book-card" data-genero="novela">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/don-quijote.jpg" alt="Don Quijote de la Mancha">
+                        <span class="book-number">01</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>Don quijote de la mancha</h2>
+                    <div class="book-info">
+                        <span class="book-category">NOVELA</span>
+                        <h3>Don Quijote de la Mancha</h3>
                         <p>Miguel de Cervantes</p>
+                        <div class="book-bottom">
+                            <span>Literatura clásica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/El Principito.jpg" alt="">
-                    <div class="genero">
-                        <p>Literatura infantil</p>
+                </article>
+
+
+                <article class="book-card" data-genero="infantil">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/el-principito.jpg" alt="El principito">
+                        <span class="book-number">02</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>El principito</h2>
+                    <div class="book-info">
+                        <span class="book-category">LITERATURA INFANTIL</span>
+                        <h3>El principito</h3>
                         <p>Antoine de Saint-Exupéry</p>
+                        <div class="book-bottom">
+                            <span>Fábula filosófica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/La metamorfosis (Die Verwandlung) Franz Kafka (1915).jpg" alt="">
-                    <div class="genero">
-                        <p>Novela corta</p>
+                </article>
+
+
+                <article class="book-card" data-genero="novela">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/metamorfosis.jpg" alt="La metamorfosis">
+                        <span class="book-number">03</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>La metamorfosis</h2>
-                        <p>Franz kafka</p>
+                    <div class="book-info">
+                        <span class="book-category">NOVELA CORTA</span>
+                        <h3>La metamorfosis</h3>
+                        <p>Franz Kafka</p>
+                        <div class="book-bottom">
+                            <span>Literatura universal</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/71WJbXGxPdL._AC_UF1000,1000_QL80_.jpg" alt="">
-                    <div class="genero">
-                        <p>Poesía épica</p>
+                </article>
+
+
+                <article class="book-card" data-genero="poesia">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/divina-comedia.jpg" alt="La divina comedia">
+                        <span class="book-number">04</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>La divina comedia</h2>
+                    <div class="book-info">
+                        <span class="book-category">POESÍA ÉPICA</span>
+                        <h3>La divina comedia</h3>
                         <p>Dante Alighieri</p>
+                        <div class="book-bottom">
+                            <span>Literatura clásica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/El bazar de los malos sueñlos.jpg" alt="">
-                    <div class="genero">
-                        <p>Ficción</p>
+                </article>
+
+
+                <article class="book-card" data-genero="ficcion">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/bazar-de-los-malos-suenos.jpg" alt="El bazar de los malos sueños">
+                        <span class="book-number">05</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>El bazar de los malos sueños</h2>
+                    <div class="book-info">
+                        <span class="book-category">FICCIÓN</span>
+                        <h3>El bazar de los malos sueños</h3>
                         <p>Stephen King</p>
+                        <div class="book-bottom">
+                            <span>Relatos y misterio</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/El extranjero.jpg" alt="">
-                    <div class="genero">
-                        <p>Ficción existencialista</p>
+                </article>
+
+
+                <article class="book-card" data-genero="ficcion">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/el-extranjero.jpg" alt="El extranjero">
+                        <span class="book-number">06</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>El extranjero</h2>
-                        <p>Albert camus</p>
+                    <div class="book-info">
+                        <span class="book-category">FICCIÓN</span>
+                        <h3>El extranjero</h3>
+                        <p>Albert Camus</p>
+                        <div class="book-bottom">
+                            <span>Existencialismo</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/La odisea.jpg" alt="">
-                    <div class="genero">
-                        <p>Poesía épica</p>
+                </article>
+
+
+                <article class="book-card" data-genero="poesia">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/odisea.jpg" alt="La odisea">
+                        <span class="book-number">07</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>La odisea</h2>
+                    <div class="book-info">
+                        <span class="book-category">POESÍA ÉPICA</span>
+                        <h3>La odisea</h3>
                         <p>Homero</p>
+                        <div class="book-bottom">
+                            <span>Mitología griega</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/La peste.jpg" alt="">
-                    <div class="genero">
-                        <p>Ficción alegórica</p>
+                </article>
+
+
+                <article class="book-card" data-genero="ficcion">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/la-peste.jpg" alt="La peste">
+                        <span class="book-number">08</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>La peste</h2>
+                    <div class="book-info">
+                        <span class="book-category">FICCIÓN</span>
+                        <h3>La peste</h3>
                         <p>Albert Camus</p>
+                        <div class="book-bottom">
+                            <span>Novela filosófica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/El mito de sisifo.jpg" alt="">
-                    <div class="genero">
-                        <p>Filosofía del absurdo</p>
+                </article>
+
+
+                <article class="book-card" data-genero="filosofia">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/mito-de-sisifo.jpg" alt="El mito de Sísifo">
+                        <span class="book-number">09</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>El mito de sisifo</h2>
+                    <div class="book-info">
+                        <span class="book-category">FILOSOFÍA</span>
+                        <h3>El mito de Sísifo</h3>
                         <p>Albert Camus</p>
+                        <div class="book-bottom">
+                            <span>Pensamiento filosófico</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/El diario de Ana Frank.jpg" alt="">
-                    <div class="genero">
-                        <p>Autobiografia</p>
+                </article>
+
+
+                <article class="book-card" data-genero="autobiografia">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/diario-de-ana-frank.jpg" alt="El diario de Ana Frank">
+                        <span class="book-number">10</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>El diario de Ana Frank</h2>
+                    <div class="book-info">
+                        <span class="book-category">AUTOBIOGRAFÍA</span>
+                        <h3>El diario de Ana Frank</h3>
                         <p>Ana Frank</p>
+                        <div class="book-bottom">
+                            <span>Memoria histórica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/No longer human.jpg" alt="">
-                    <div class="genero">
-                        <p>Literatura existencialista</p>
+                </article>
+
+
+                <article class="book-card" data-genero="ficcion">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/no-longer-human.jpg" alt="Indigno de ser humano">
+                        <span class="book-number">11</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>Indigno de ser humano</h2>
+                    <div class="book-info">
+                        <span class="book-category">LITERATURA EXISTENCIALISTA</span>
+                        <h3>Indigno de ser humano</h3>
                         <p>Osamu Dazai</p>
+                        <div class="book-bottom">
+                            <span>Novela psicológica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="img/libros/hamlet.jpg" alt="">
-                    <div class="genero">
-                        <p>Tragedia teatral</p>
+                </article>
+
+
+                <article class="book-card" data-genero="teatro">
+                    <div class="book-image">
+                        <img src="/img/imagenes de liibros/hamlet.jpg" alt="Hamlet">
+                        <span class="book-number">12</span>
                     </div>
-                    <div class="infoLibro">
-                        <h2>Hamlet</h2>
+                    <div class="book-info">
+                        <span class="book-category">TEATRO</span>
+                        <h3>Hamlet</h3>
                         <p>William Shakespeare</p>
+                        <div class="book-bottom">
+                            <span>Tragedia clásica</span>
+                            <span class="book-arrow">↗</span>
+                        </div>
                     </div>
-                </div>
-    </div>
-    
+                </article>
+
+            </div>
+
+
+            <div class="no-results" id="sinResultados">
+                <span>⌕</span>
+                <h3>No encontramos resultados</h3>
+                <p>Intenta buscar otro título, autor o género.</p>
+            </div>
+
+        </section>
+
+
+        <!-- FRASE FINAL -->
+        <section class="quote-section">
+            <span>UNA BIBLIOTECA ES UN UNIVERSO</span>
+            <h2>
+                Los libros son espejos:
+                solo ves en ellos lo que ya llevas dentro.
+            </h2>
+            <p>La lectura transforma la manera de comprender el mundo.</p>
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+
+        <div class="footer-brand">
+            <strong>BIBLIOTECA CESDE</strong>
+            <span>Sede Bello</span>
+        </div>
+
+        <p>Un espacio para aprender, descubrir y crecer.</p>
+
+        <span class="footer-copy">
+            © 2026 Biblioteca Sede Bello. Todos los derechos reservados.
+        </span>
+
+    </footer>
+
+
+    <script src="js/inventario.js"></script>
+
 </body>
 </html>

@@ -50,8 +50,8 @@ a {
 }
 
 .logo img {
-    width: 48px;
-    height: 48px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
 }
 
@@ -824,21 +824,95 @@ a {
     }
 
 }
+/* LOGO CENTRAL - PORTADA */
+
 .visual-letter {
     position: absolute;
-    top: 150px;
-    left: 790px;
-    width: 340px;
-    height: 340px;
+    top: 50%;
+    left: 76%;
+    transform: translate(-50%, -50%);
+
+    width: 200px;
+    height: 200px;
+
     display: flex;
-    align-items: center;
     justify-content: center;
-    opacity: 0.55;
-    z-index: 1;
+    align-items: center;
+
+    background: #D8CFC4;
+    border: 3px solid #8C7A6B;
+    border-radius: 50%;
+
+    overflow: hidden;
+    z-index: 5;
+
+    box-shadow: 0 0 40px rgba(140, 122, 107, 0.35);
 }
 
 .visual-letter img {
-    width: 90%;
-    height: 100%;
+    width: 150%;
+    height: 150%;
     object-fit: contain;
+    border-radius: 50%;
+}
+
+/* CONTENEDOR DEL STOCK */
+
+.book-stock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: #f3f0eb;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.book-stock span {
+    color: #777;
+    font-weight: 500;
+}
+
+.book-stock strong {
+    color: #8C7A6B;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+/* BOTÓN PRESTAR */
+
+.btn-prestar {
+    width: 100%;
+    margin-top: 12px;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: #8C7A6B;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-prestar:hover {
+    background: #594638;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* LIBRO AGOTADO */
+
+.btn-prestar.agotado {
+    background: #b8b8b8;
+    color: #fff;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-prestar:disabled {
+    opacity: 0.8;
 }

@@ -1,176 +1,1285 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Prestamos de Libros</title>
-    <link rel="stylesheet" href="css/catalogo.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventario | Biblioteca Cesde</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --cafe: #8C7A6B;
+    --cafe-oscuro: #6F5E50;
+    --beige: #D8CFC4;
+    --gris: #AFAFAF;
+    --blanco: #FFFFFF;
+    --fondo: #F5F2ED;
+    --texto: #27211c;
+    --cafe: #8C7A6B;
+    --borde: #E9E2D9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+/* BARRA LATERAL */
+
+.sidebar {
+    width: 245px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--negro);
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 55px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.brand strong {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.brand small {
+    display: block;
+    color: #BDB4AA;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.menu-title {
+    color: #AFA79F;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin: 0 0 15px 12px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 13px;
+    margin-bottom: 8px;
+    color: #D8D0C8;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.menu a:hover,
+.menu a.active {
+    background: var(--cafe);
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #39332E;
+    color: #AAA39B;
+    font-size: 11px;
+}
+
+/* CONTENIDO */
+
+.main {
+    margin-left: 245px;
+    padding: 35px 45px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.topbar span {
+    color: var(--cafe);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.topbar h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    margin-top: 7px;
+}
+
+.admin {
+    background: white;
+    border: 1px solid var(--borde);
+    padding: 11px 17px;
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+/* PRESENTACIÓN */
+
+.hero {
+    background: linear-gradient(120deg, #8C7A6B, #6F5E50);
+    border-radius: 20px;
+    padding: 35px;
+    color: white;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "📚";
+    position: absolute;
+    right: 55px;
+    top: 15px;
+    font-size: 100px;
+    opacity: .15;
+}
+
+.hero small {
+    letter-spacing: 2px;
+    font-size: 10px;
+    opacity: .8;
+}
+
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+.hero p {
+    font-size: 13px;
+    opacity: .85;
+    max-width: 500px;
+    line-height: 1.7;
+}
+
+/* ESTADÍSTICAS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid var(--borde);
+    padding: 23px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px #0000000D;
+}
+
+.stat-card span {
+    font-size: 12px;
+    color: #81786F;
+}
+
+.stat-card h3 {
+    font-size: 30px;
+    margin-top: 10px;
+    color: var(--cafe-oscuro);
+}
+
+/* INVENTARIO */
+
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.inventory-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+}
+
+.add-button {
+    background: var(--cafe);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.add-button:hover {
+    background: var(--cafe-oscuro);
+    transform: translateY(-2px);
+}
+
+/* BUSCADOR */
+
+.filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.filters input,
+.filters select {
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    padding: 13px;
+    font-family: inherit;
+    outline: none;
+}
+
+.filters input {
+    flex: 1;
+}
+
+.filters input:focus,
+.filters select:focus {
+    border-color: var(--cafe);
+}
+
+/* TARJETAS */
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .3s;
+    min-width: 0;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px #a80a0a12;
+}
+
+.book-cover {
+    height: 210px;
+    background: #6F5E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.book-cover .placeholder {
+    font-size: 55px;
+}
+
+.book-info {
+    padding: 16px;
+}
+
+.book-info h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 42px;
+    margin-bottom: 8px;
+}
+
+.category {
+    font-size: 11px;
+    color: #81786F;
+    margin-bottom: 12px;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.available {
+    background: #E5F1E8;
+    color: #39734B;
+}
+
+.occupied {
+    background: #F7E9DF;
+    color: #A45D36;
+}
+
+.card-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 15px;
+}
+
+.card-actions button {
+    flex: 1;
+    border: none;
+    padding: 9px 5px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.edit-btn {
+    background: #EEE8E1;
+    color: var(--cafe-oscuro);
+}
+
+.delete-btn {
+    background: #F8E6E3;
+    color: #A34338;
+}
+
+.card-actions button:hover {
+    filter: brightness(.94);
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #00000080;
+    z-index: 30;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 18px;
+    animation: aparecer .3s ease;
+}
+
+.modal-content h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 22px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--cafe);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.save-btn {
+    background: var(--cafe);
+    color: white;
+}
+
+.cancel-btn {
+    background: #EEE8E1;
+    color: var(--texto);
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    color: #81786F;
+    background: white;
+    border-radius: 12px;
+    grid-column: 1 / -1;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1100px) {
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .main {
+        padding: 30px;
+    }
+}
+
+@media(max-width: 800px) {
+    .sidebar {
+        width: 75px;
+        padding: 25px 10px;
+    }
+
+    .brand {
+        justify-content: center;
+    }
+
+    .brand div,
+    .menu-title,
+    .menu a span,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .menu a {
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .main {
+        margin-left: 75px;
+        padding: 25px 18px;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 520px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .inventory-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .book-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .book-cover {
+        height: 160px;
+    }
+
+    .book-info {
+        padding: 11px;
+    }
+
+    .book-info h3 {
+        font-size: 12px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+    .admin {
+        display: none;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <header class="header">
+<!-- BARRA LATERAL -->
 
-        <div class="logo">
-            <img src="imagen_2026-05-08_100742793-removebg-preview.png" alt="Logo">
+<aside class="sidebar">
+
+    <div class="brand">
+        <img src="/img/logo.png" alt="Logo Biblioteca">
+        <div>
+            <strong>BIBLIOTECA</strong>
+            <small>CESDE</small>
+        </div>
+    </div>
+
+    <p class="menu-title">MENÚ PRINCIPAL</p>
+
+    <nav class="menu">
+        <a href="administrador.html">🏠 <span>Inicio</span></a>
+        <a href="inventario.html" class="active">📚 <span>Inventario</span></a>
+        <a href="contacto.html">✉️ <span>Contacto</span></a>
+        <a href="terminos.html">📄 <span>Términos</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+        Biblioteca CESDE<br>
+        Proyecto académico · 2026
+    </div>
+
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+
+<main class="main">
+
+    <header class="topbar">
+        <div>
+            <span>GESTIÓN DE RECURSOS</span>
+            <h1>Inventario de libros</h1>
         </div>
 
-        <div class="titulo">
-            <h1>Sistema Prestamos de Libros</h1>
-            <p>Inventario</p>
-        </div>
-
+        <div class="admin">👤 Administrador</div>
     </header>
 
-    <section class="busqueda">
-        <div class="search-box">
-            <span class="lupa">🔍</span>
-            <input type="text" placeholder="Buscar libro...">
-        </div>
-
-        <button class="btn-agregar">➕ Agregar</button>
+    <section class="hero">
+        <small>BIBLIOTECA CESDE</small>
+        <h2>Un universo de conocimiento</h2>
+        <p>
+            Administra, organiza y descubre los libros disponibles
+            en nuestra biblioteca desde un solo lugar.
+        </p>
     </section>
 
-    <section class="abecedario">
-        <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span>
-        <span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span>
-        <span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span>
-        <span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span>
-        <span>Y</span><span>Z</span>
+    <!-- ESTADÍSTICAS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <span>Total de libros</span>
+            <h3 id="totalBooks">13</h3>
+        </div>
+
+        <div class="stat-card">
+            <span>Disponibles</span>
+            <h3 id="availableBooks">13</h3>
+        </div>
+
+        <div class="stat-card">
+            <span>Ocupados</span>
+            <h3 id="occupiedBooks">0</h3>
+        </div>
+
     </section>
 
-    <main class="tabla">
+    <!-- INVENTARIO -->
 
-        <div class="fila encabezado">
-            <div>Título</div>
-            <div>Categoría</div>
-            <div>Acción</div>
+    <section>
+
+        <div class="inventory-header">
+            <h2>Biblioteca Cesde</h2>
+
+            <button class="add-button" onclick="openModal()">
+                + Agregar libro
+            </button>
         </div>
 
-        <div class="fila">
-            <div>Don Quijote de la Mancha</div>
-            <div>Novela Clásica</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
+        <div class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Buscar por título..."
+                oninput="filterBooks()"
+            >
+
+            <select id="categoryFilter" onchange="filterBooks()">
+                <option value="">Todas las categorías</option>
+                <option value="Literatura">Literatura</option>
+                <option value="Filosofía">Filosofía</option>
+                <option value="Historia">Historia</option>
+                <option value="Clásicos">Clásicos</option>
+            </select>
+
+            <select id="statusFilter" onchange="filterBooks()">
+                <option value="">Todos los estados</option>
+                <option value="Disponible">Disponible</option>
+                <option value="Ocupado">Ocupado</option>
+            </select>
+
+        </div>
+
+        <div class="book-grid" id="bookList">
+
+            <!-- LIBRO 1 -->
+
+            <article class="book-card" data-id="1">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/don-quijote.jpg" alt="Don Quijote de la Mancha">
+                </div>
+                <div class="book-info">
+                    <h3>Don Quijote de la Mancha</h3>
+                    <p class="category">Clásicos</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 2 -->
+
+            <article class="book-card" data-id="2">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/divina-comedia.jpg" alt="La Divina Comedia">
+                </div>
+                <div class="book-info">
+                    <h3>La Divina Comedia</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 3 -->
+
+            <article class="book-card" data-id="3">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/bazar-de-los-malos-suenos.jpg" alt="El bazar de los malos sueños">
+                </div>
+                <div class="book-info">
+                    <h3>El bazar de los malos sueños</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 4 -->
+
+            <article class="book-card" data-id="4">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/diario-de-ana-frank.jpg" alt="El diario de Ana Frank">
+                </div>
+                <div class="book-info">
+                    <h3>El diario de Ana Frank</h3>
+                    <p class="category">Historia</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 5 -->
+
+            <article class="book-card" data-id="5">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/el-extranjero.jpg" alt="El extranjero">
+                </div>
+                <div class="book-info">
+                    <h3>El extranjero</h3>
+                    <p class="category">Filosofía</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 6 -->
+
+            <article class="book-card" data-id="6">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/mito-de-sisifo.jpg" alt="El mito de Sísifo">
+                </div>
+                <div class="book-info">
+                    <h3>El mito de Sísifo</h3>
+                    <p class="category">Filosofía</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 7 -->
+
+            <article class="book-card" data-id="7">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/el-principito.jpg" alt="El principito">
+                </div>
+                <div class="book-info">
+                    <h3>El principito</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 8 -->
+
+            <article class="book-card" data-id="8">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/hamlet.jpg" alt="Hamlet">
+                </div>
+                <div class="book-info">
+                    <h3>Hamlet</h3>
+                    <p class="category">Clásicos</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 9 -->
+
+            <article class="book-card" data-id="9">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/metamorfosis.jpg" alt="La metamorfosis">
+                </div>
+                <div class="book-info">
+                    <h3>La metamorfosis</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 10 -->
+
+            <article class="book-card" data-id="10">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/odisea.jpg" alt="La odisea">
+                </div>
+                <div class="book-info">
+                    <h3>La odisea</h3>
+                    <p class="category">Clásicos</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 11 -->
+
+            <article class="book-card" data-id="11">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/la-peste.jpg" alt="La peste">
+                </div>
+                <div class="book-info">
+                    <h3>La peste</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 12 -->
+
+            <article class="book-card" data-id="12">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/no-longer-human.jpg" alt="Indigno de ser humano">
+                </div>
+                <div class="book-info">
+                    <h3>Indigno de ser humano</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIBRO 13 -->
+
+            <article class="book-card" data-id="13">
+                <div class="book-cover">
+                    <img src="/img/imagenes de liibros/noches-blancas.jpg" alt="Noches blancas">
+                </div>
+                <div class="book-info">
+                    <h3>Noches blancas</h3>
+                    <p class="category">Literatura</p>
+                    <span class="status available">Disponible</span>
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                        <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
+                    </div>
+                </div>
+            </article>
+
+            <div class="empty-message" id="emptyMessage">
+                No se encontraron libros con esos criterios.
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- VENTANA PARA AGREGAR Y EDITAR -->
+
+<div class="modal" id="bookModal">
+
+    <div class="modal-content">
+
+        <h2 id="modalTitle">Agregar libro</h2>
+
+        <form id="bookForm">
+
+            <div class="form-group">
+                <label for="bookTitle">Título del libro</label>
+                <input type="text" id="bookTitle" placeholder="Escribe el título" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bookCategory">Categoría</label>
+                <select id="bookCategory" required>
+                    <option value="">Seleccionar categoría</option>
+                    <option value="Literatura">Literatura</option>
+                    <option value="Filosofía">Filosofía</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Clásicos">Clásicos</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bookStatus">Disponibilidad</label>
+                <select id="bookStatus" required>
+                    <option value="Disponible">Disponible</option>
+                    <option value="Ocupado">Ocupado</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button type="submit" class="save-btn">Guardar libro</button>
+                <button type="button" class="cancel-btn" onclick="closeModal()">Cancelar</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+// VARIABLES
+
+const bookList = document.getElementById("bookList");
+const modal = document.getElementById("bookModal");
+const bookForm = document.getElementById("bookForm");
+
+let editingCard = null;
+let nextId = 14;
+
+// GUARDAR INFORMACIÓN
+
+function saveBooks() {
+
+    const cards = document.querySelectorAll(".book-card");
+    const books = [];
+
+    cards.forEach(card => {
+
+        books.push({
+            id: card.dataset.id,
+            title: card.querySelector("h3").textContent,
+            category: card.querySelector(".category").textContent,
+            status: card.querySelector(".status").textContent,
+            original: card.dataset.original || "no"
+        });
+
+    });
+
+    localStorage.setItem("biblioteca2027", JSON.stringify(books));
+}
+
+// RESTAURAR INFORMACIÓN SIN CAMBIAR LAS IMÁGENES DEL HTML
+
+function loadBooks() {
+
+    const savedBooks = JSON.parse(localStorage.getItem("biblioteca2027"));
+
+    if (!savedBooks) {
+        updateStats();
+        return;
+    }
+
+    const initialCards = document.querySelectorAll(".book-card");
+
+    initialCards.forEach(card => {
+
+        const saved = savedBooks.find(book => book.id === card.dataset.id);
+
+        if (!saved) {
+            card.remove();
+            return;
+        }
+
+        card.querySelector("h3").textContent = saved.title;
+        card.querySelector(".category").textContent = saved.category;
+        setStatus(card, saved.status);
+
+    });
+
+    savedBooks.forEach(book => {
+
+        const existing = document.querySelector(
+            '.book-card[data-id="' + book.id + '"]'
+        );
+
+        if (!existing) {
+            createNewCard(book.id, book.title, book.category, book.status);
+        }
+
+    });
+
+    const highestId = Math.max(
+        13,
+        ...savedBooks.map(book => Number(book.id) || 0)
+    );
+
+    nextId = highestId + 1;
+
+    updateStats();
+    filterBooks();
+}
+
+// CAMBIAR DISPONIBILIDAD
+
+function setStatus(card, status) {
+
+    const badge = card.querySelector(".status");
+
+    badge.textContent = status;
+    badge.className = "status " +
+        (status === "Disponible" ? "available" : "occupied");
+}
+
+// ABRIR MODAL
+
+function openModal() {
+
+    editingCard = null;
+    bookForm.reset();
+
+    document.getElementById("modalTitle").textContent = "Agregar libro";
+
+    modal.style.display = "flex";
+}
+
+// CERRAR MODAL
+
+function closeModal() {
+
+    modal.style.display = "none";
+    bookForm.reset();
+    editingCard = null;
+}
+
+// CREAR TARJETA PARA UN LIBRO NUEVO
+
+function createNewCard(id, title, category, status) {
+
+    const card = document.createElement("article");
+
+    card.className = "book-card";
+    card.dataset.id = id;
+
+    card.innerHTML = `
+        <div class="book-cover">
+            <div class="placeholder">📖</div>
+        </div>
+
+        <div class="book-info">
+            <h3></h3>
+            <p class="category"></p>
+            <span class="status"></span>
+
+            <div class="card-actions">
+                <button class="edit-btn" onclick="editBook(this)">Editar</button>
+                <button class="delete-btn" onclick="deleteBook(this)">Eliminar</button>
             </div>
         </div>
+    `;
 
-        <div class="fila">
-            <div>El Principito</div>
-            <div>Literatura Infantil</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    card.querySelector("h3").textContent = title;
+    card.querySelector(".category").textContent = category;
 
-        <div class="fila">
-            <div>La Metamorfosis</div>
-            <div>Literatura Existencial</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    bookList.insertBefore(card, document.getElementById("emptyMessage"));
 
-        <div class="fila">
-            <div>La Divina Comedia</div>
-            <div>Poesía Épica</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    setStatus(card, status);
 
-        <div class="fila">
-            <div>El Bazar de los Malos Sueños</div>
-            <div>Terror / Suspenso</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    return card;
+}
 
-        <div class="fila">
-            <div>El Extranjero</div>
-            <div>Filosofía / Existencialismo</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+// AGREGAR O GUARDAR CAMBIOS
 
-        <div class="fila">
-            <div>La Odisea</div>
-            <div>Mitología / Épica</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+bookForm.addEventListener("submit", function(event) {
 
-        <div class="fila">
-            <div>La Peste</div>
-            <div>Novela Filosófica</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    event.preventDefault();
 
-        <div class="fila">
-            <div>El Mito de Sísifo</div>
-            <div>Ensayo Filosófico</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    const title = document.getElementById("bookTitle").value.trim();
+    const category = document.getElementById("bookCategory").value;
+    const status = document.getElementById("bookStatus").value;
 
-        <div class="fila">
-            <div>El Diario de Ana Frank</div>
-            <div>Biografía / Historia</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    if (title === "" || category === "") {
+        alert("Completa todos los campos.");
+        return;
+    }
 
-        <div class="fila">
-            <div>Indigno de ser Humano</div>
-            <div>Drama Psicológico</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+    if (editingCard) {
 
-        <div class="fila">
-            <div>Hamlet</div>
-            <div>Teatro / Tragedia</div>
-            <div class="acciones">
-                <span class="icon editar">✏️</span>
-                <span class="icon eliminar">🗑️</span>
-                <span class="icon opciones">⋮</span>
-            </div>
-        </div>
+        editingCard.querySelector("h3").textContent = title;
+        editingCard.querySelector(".category").textContent = category;
 
-    </main>
+        setStatus(editingCard, status);
 
-    <footer>
-        <p>Inventario de libros - Sistema de control</p>
-    </footer>
+        alert("Libro actualizado correctamente.");
+
+    } else {
+
+        createNewCard(nextId, title, category, status);
+
+        nextId++;
+
+        alert("Libro agregado correctamente.");
+
+    }
+
+    saveBooks();
+    updateStats();
+    filterBooks();
+    closeModal();
+
+});
+
+// EDITAR LIBRO
+
+function editBook(button) {
+
+    editingCard = button.closest(".book-card");
+
+    document.getElementById("modalTitle").textContent = "Editar libro";
+
+    document.getElementById("bookTitle").value =
+        editingCard.querySelector("h3").textContent;
+
+    document.getElementById("bookCategory").value =
+        editingCard.querySelector(".category").textContent;
+
+    document.getElementById("bookStatus").value =
+        editingCard.querySelector(".status").textContent;
+
+    modal.style.display = "flex";
+}
+
+// ELIMINAR LIBRO
+
+function deleteBook(button) {
+
+    const card = button.closest(".book-card");
+    const title = card.querySelector("h3").textContent;
+
+    const confirmation = confirm(
+        "¿Estás seguro de eliminar el libro " + title + "?"
+    );
+
+    if (confirmation) {
+
+        card.remove();
+
+        saveBooks();
+        updateStats();
+        filterBooks();
+
+        alert("Libro eliminado correctamente.");
+
+    }
+
+}
+
+// BUSCAR Y FILTRAR
+
+function filterBooks() {
+
+    const search = document.getElementById("searchInput")
+        .value.toLowerCase();
+
+    const category = document.getElementById("categoryFilter").value;
+    const status = document.getElementById("statusFilter").value;
+
+    const cards = document.querySelectorAll(".book-card");
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        const bookCategory = card.querySelector(".category").textContent;
+        const bookStatus = card.querySelector(".status").textContent;
+
+        const matchesSearch = title.includes(search);
+        const matchesCategory = category === "" || bookCategory === category;
+        const matchesStatus = status === "" || bookStatus === status;
+
+        if (matchesSearch && matchesCategory && matchesStatus) {
+
+            card.style.display = "";
+            visible++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("emptyMessage").style.display =
+        visible === 0 ? "block" : "none";
+}
+
+// ACTUALIZAR ESTADÍSTICAS
+
+function updateStats() {
+
+    const cards = document.querySelectorAll(".book-card");
+
+    let available = 0;
+    let occupied = 0;
+
+    cards.forEach(card => {
+
+        const status = card.querySelector(".status").textContent;
+
+        if (status === "Disponible") {
+            available++;
+        } else {
+            occupied++;
+        }
+
+    });
+
+    document.getElementById("totalBooks").textContent = cards.length;
+    document.getElementById("availableBooks").textContent = available;
+    document.getElementById("occupiedBooks").textContent = occupied;
+}
+
+// CERRAR MODAL AL HACER CLIC AFUERA
+
+modal.addEventListener("click", function(event) {
+
+    if (event.target === modal) {
+        closeModal();
+    }
+
+});
+
+// INICIAR PÁGINA
+
+loadBooks();
+updateStats();
+
+</script>
 
 </body>
 </html>

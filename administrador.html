@@ -1,77 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administrador | Biblioteca CESDE</title>
+
+    <link rel="stylesheet" href="/css/styleadmi.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
+
+<!-- HEADER -->
 <header class="header">
-    <div class="logo">
-        <img src="img/logo.png" alt="Logo">
-    </div>
-<a href="usuario.html" class="btn btn-secondary">
-  Ir a Usuario
-</a>
+
+    <a href="administrador.html" class="logo">
+        <img src="img/logo.png" alt="Logo Biblioteca">
+
+        <div class="logo-text">
+            <strong>Biblioteca</strong>
+            <span>SEDE BELLO · ADMINISTRACIÓN</span>
+        </div>
+    </a>
+
     <nav class="nav">
-        <a href="index.html" class>Inicio</a>
+        <a href="administrador.html" class="active">Inicio</a>
         <a href="inventario.html">Inventario</a>
         <a href="contacto.html">Contacto</a>
+         <a href="catalogo.html">Catálogo</a>
     </nav>
+
+    <a href="usuario.html" class="user-button">
+        <span>♙</span> Ir a Usuario
+    </a>
+
 </header>
-<body>
-<link rel="stylesheet" href="css/style.css">
 
-<section class="hero">
-    <div>
-        <h1>Biblioteca Inteligente</h1>
-        <p>Gestiona libros, usuarios y préstamos de forma rápida y organizada.</p>
+<main>
 
-        <div class="hero-buttons">
-            <a href="inventario.html" class="btn">Ver Inventario</a>
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                CENTRO DE ADMINISTRACIÓN
+            </div>
+
+            <h1>
+                Gestiona tu biblioteca<br>
+                <span>Controla cada detalle.</span>
+            </h1>
+
+            <p>
+                Bienvenido al centro de administración de Biblioteca CESDE.
+                Supervisa el inventario, consulta tus usuarios registrados
+                y administra los recursos de manera organizada.
+            </p>
+
+            <div class="hero-actions">
+                <a href="inventario.html" class="primary-button">
+                    Explorar inventario <span>↗</span>
+                </a>
+
+                <a href="#usuarios" class="outline-button">
+                    Ver usuarios
+                </a>
+            </div>
+
+            <div class="hero-bottom">
+                <span>✦</span> ADMINISTRACIÓN · ORGANIZACIÓN · CONTROL
+            </div>
+
         </div>
-    </div>
-</section>
 
-<!-- STATS -->
-<section class="stats">
-    <div class="stat">
-        <h2>12</h2>
-        <p>Libros</p>
-    </div>
-    <div class="stat">
-        <h2>45</h2>
-        <p>Usuarios</p>
-    </div>
-    <div class="stat">
-        <h2>12</h2>
-        <p>Préstamos disponibles</p>
-    </div>
-</section>
+        <div class="hero-visual">
 
-<section class="features">
-    <div class="feature">
-        <div class="icon">📊</div>
-        <h3>Inventario</h3>
-        <p>Control total de libros en tiempo real.</p>
-    </div>
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
 
-    <div class="feature">
-        <div class="icon">🔒</div>
-        <h3>Seguridad</h3>
-        <p>Usuarios con control y restricciones.</p>
-    </div>
+           
 
-    <div class="feature">
-        <div class="icon">⚡</div>
-        <h3>Rapidez</h3>
-        <p>Gestión eficiente y sin complicaciones.</p>
-    </div>
-</section>
+           <div class="central-icon">
+    <img src="/img/logo.png" alt="Logo Biblioteca Inteligente">
+</div>
 
-<section class="activity">
-    <h2>Últimos movimientos</h2>
-    <ul>
-        <li>📚 Juan prestó "el extrangero"</li>
-        <li>➕ Nuevo libro agregado: "El principito"</li>
-        <li>✅ María devolvió un libro</li>
-    </ul>
-</section>
+<h2>Knowledge<br>Management</h2>
 
+<p>Biblioteca Cesde</p>
+            </div>
+
+            <div class="floating-card float-top">
+                <span class="float-icon">♙</span>
+                <div>
+                    <strong>Usuarios</strong>
+                    <small id="floatingUsers">0 registrados</small>
+                </div>
+            </div>
+
+            <div class="floating-card float-bottom">
+                <span class="float-icon">✓</span>
+                <div>
+                    <strong>Control activo</strong>
+                    <small>Panel administrativo</small>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section class="stats">
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>COLECCIÓN TOTAL</span>
+                <div class="stat-icon">▤</div>
+            </div>
+
+            <h2 id="totalLibros">12</h2>
+            <p>Libros registrados</p>
+            <div class="stat-line"><span style="width:75%"></span></div>
+        </article>
+
+        <article class="stat-card featured-stat">
+            <div class="stat-top">
+                <span>COMUNIDAD</span>
+                <div class="stat-icon">♙</div>
+            </div>
+
+            <h2 id="totalUsuarios">0</h2>
+            <p>Usuarios registrados</p>
+            <div class="stat-line"><span id="userProgress" style="width:0%"></span></div>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>DISPONIBILIDAD</span>
+                <div class="stat-icon">▦</div>
+            </div>
+
+            <h2 id="totalPrestamos">12</h2>
+            <p>Préstamos disponibles</p>
+            <div class="stat-line"><span style="width:60%"></span></div>
+        </article>
+
+    </section>
+
+    <!-- GRÁFICA -->
+    <section class="analytics-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">ANÁLISIS DEL SISTEMA</span>
+                <h2>Actividad Cesde</h2>
+                <p>Comportamiento simulado de los préstamos durante seis meses.</p>
+            </div>
+
+            <span class="simulation-tag">● DATOS SIMULADOS</span>
+        </div>
+
+        <div class="analytics-card">
+
+            <div class="analytics-summary">
+                <div>
+                    <small>TOTAL DE PRÉSTAMOS SIMULADOS</small>
+                    <h3>156</h3>
+                    <p>Registros de ejemplo</p>
+                </div>
+
+                <div class="analytics-icon">▥</div>
+            </div>
+
+            <div class="chart">
+
+                <div class="chart-y">
+                    <span>40</span>
+                    <span>30</span>
+                    <span>20</span>
+                    <span>10</span>
+                    <span>0</span>
+                </div>
+
+                <div class="chart-area">
+
+                    <div class="chart-grid">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="chart-bars">
+
+                        <div class="bar-group">
+                            <div class="bar" style="--value:35%">
+                                <b>14</b>
+                            </div>
+                            <small>Ene</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="--value:52.5%">
+                                <b>21</b>
+                            </div>
+                            <small>Feb</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="--value:45%">
+                                <b>18</b>
+                            </div>
+                            <small>Mar</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="--value:75%">
+                                <b>30</b>
+                            </div>
+                            <small>Abr</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="--value:60%">
+                                <b>24</b>
+                            </div>
+                            <small>May</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="--value:87.5%">
+                                <b>35</b>
+                            </div>
+                            <small>Jun</small>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chart-legend">
+                <span></span> Libros prestados por mes
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- USUARIOS REGISTRADOS -->
+    <section class="users-section" id="usuarios">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">GESTIÓN DE COMUNIDAD</span>
+                <h2>Usuarios registrados</h2>
+                <p>Consulta las cuentas creadas desde el formulario de registro.</p>
+            </div>
+
+            <div class="users-counter">
+                <strong id="usersCount">0</strong>
+                <span>CUENTAS</span>
+            </div>
+        </div>
+
+        <div class="users-panel">
+
+            <div class="users-panel-header">
+                <div>
+                    <h3>Directorio de usuarios</h3>
+                    <p>Información almacenada localmente</p>
+                </div>
+
+                <span class="storage-status">
+                    <i></i> LOCAL STORAGE
+                </span>
+            </div>
+
+            <div class="users-table-wrapper">
+
+                <table class="users-table">
+
+                    <thead>
+                        <tr>
+                            <th>USUARIO</th>
+                            <th>CORREO ELECTRÓNICO</th>
+                            <th>ESTADO</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="usersTableBody">
+
+                        <tr>
+                            <td colspan="3" class="empty-users">
+                                Cargando usuarios...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="users-footer">
+                <span>Los datos se consultan desde este navegador.</span>
+                <button onclick="cargarUsuarios()">↻ Actualizar lista</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FUNCIONES -->
+    <section class="functions-section">
+
+        <div class="section-heading centered">
+            <span class="section-label">HERRAMIENTAS ADMINISTRATIVAS</span>
+            <h2>Funciones principales</h2>
+            <p>Administra todos los recursos desde un solo espacio.</p>
+        </div>
+
+        <div class="features">
+
+            <a href="inventario.html" class="feature-card">
+                <div class="feature-icon">▤</div>
+                <span>01 / INVENTARIO</span>
+                <h3>Control de libros</h3>
+                <p>Agrega, edita, elimina y consulta ejemplares de la biblioteca.</p>
+                <div class="feature-link">Explorar inventario <b>↗</b></div>
+            </a>
+
+            <a href="#usuarios" class="feature-card">
+                <div class="feature-icon">♙</div>
+                <span>02 / USUARIOS</span>
+                <h3>Gestión de usuarios</h3>
+                <p>Consulta las cuentas registradas en la plataforma.</p>
+                <div class="feature-link">Ver usuarios <b>↗</b></div>
+            </a>
+
+            <a href="contacto.html" class="feature-card">
+                <div class="feature-icon">✉</div>
+                <span>03 / SOPORTE</span>
+                <h3>Atención y contacto</h3>
+                <p>Consulta el espacio de comunicación de la biblioteca.</p>
+                <div class="feature-link">Ver contacto <b>↗</b></div>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ACTIVIDAD -->
+    <section class="activity-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">SEGUIMIENTO</span>
+                <h2>Últimos movimientos</h2>
+                <p>Registro de actividad de demostración.</p>
+            </div>
+
+            <span class="simulation-tag">● DEMOSTRACIÓN</span>
+        </div>
+
+        <div class="activity-list">
+
+            <div class="activity-item">
+                <div class="activity-icon">▤</div>
+                <div class="activity-info">
+                    <strong>Préstamo registrado</strong>
+                    <p>Juan prestó el libro El extranjero.</p>
+                </div>
+                <span class="activity-type">PRÉSTAMO</span>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-icon">＋</div>
+                <div class="activity-info">
+                    <strong>Nuevo libro agregado</strong>
+                    <p>Se agregó El principito al inventario.</p>
+                </div>
+                <span class="activity-type">INVENTARIO</span>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-icon">✓</div>
+                <div class="activity-info">
+                    <strong>Devolución completada</strong>
+                    <p>María realizó la devolución de un libro.</p>
+                </div>
+                <span class="activity-type">DEVOLUCIÓN</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BANNER FINAL -->
+    <section class="final-banner">
+
+        <div>
+            <span>LECTURA · ORGANIZACIÓN · TECNOLOGÍA</span>
+            <h2>El futuro de la biblioteca está en tus manos.</h2>
+            <p>Gestiona cada recurso y transforma la experiencia de lectura.</p>
+        </div>
+
+        <a href="inventario.html">Ir al inventario ↗</a>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
 <footer class="footer">
-    <p>© 2026 Biblioteca Inteligente | Proyecto Académico</p>
+
+    <div class="footer-brand">
+        <img src="img/logo.png" alt="Logo">
+        <span>Biblioteca CESDE</span>
+    </div>
+
+    <p>© 2026 Biblioteca CESDE · Proyecto Académico</p>
+    <small>Sede Bello · Colombia</small>
+
 </footer>
 
+<script src="js/administrador.js"></script>
+
 </body>
+</html>

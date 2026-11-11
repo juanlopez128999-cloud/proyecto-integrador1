@@ -1,95 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biblioteca Inteligente | Next Generation</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- FONDO -->
+<div class="background-glow"></div>
+
+<!-- HEADER -->
 <header class="header">
+
     <div class="logo">
-        <img src="img/logo.png" alt="Logo">
-    </div>
-    <button class="btn btn-dark" onclick="irAdmin()">
-  Ir a Administrador
-</button>
-
-<script>
-function irAdmin(){
-  const adminEmail = "juan128999";
-  const adminPass = "juan1022149696*";
-
-  const email = prompt("Ingrese correo:");
-  const pass = prompt("Ingrese contraseña:");
-
-  if(email === adminEmail && pass === adminPass){
-    window.location.href = "administrador.html";
-  } else {
-    alert("Acceso denegado");
-  }
-}
-</script>
+        <img src="img/logo.png" alt="Logo Biblioteca">
+        <div class="logo-text">
+            <span>BIBLIOTECA</span>
+            <small>CESDE</small>
+        </div>
+</div>
 
     <nav class="nav">
-        <a href="index.html">Inicio</a>
+        <a href="index.html" class="active">Inicio</a>
         <a href="inventario.html">Inventario</a>
         <a href="contacto.html">Contacto</a>
     </nav>
+
+    <button class="user-button" onclick="irAdmin()">
+        <span>♜</span> Administrador
+    </button>
+
 </header>
 
-<body>
-<link rel="stylesheet" href="css/style.css">
-
+<!-- HERO -->
 <section class="hero">
-    <div>
-        <h1>Biblioteca Inteligente</h1>
-        <p>Gestiona libros, usuarios y préstamos de forma rápida y organizada.</p>
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            <span class="status-dot"></span>
+            SISTEMA DE GESTIÓN INTELIGENTE
+        </div>
+
+        <h1>
+            El conocimiento<br>
+            comienza con <span>un libro.</span>
+        </h1>
+
+        <p>
+            Una nueva generación de gestión bibliotecaria.
+            Explora, administra y descubre un mundo de conocimiento
+            desde una plataforma inteligente.
+        </p>
 
         <div class="hero-buttons">
-            <a href="inventario.html" class="btn">Ver Inventario</a>
+
+            <a href="inventario.html" class="primary-btn">
+                Explorar inventario
+                <span>→</span>
+            </a>
+
+            <a href="contacto.html" class="secondary-btn">
+                Conocer más
+            </a>
+
         </div>
+
+        <div class="hero-note">
+            <span>✦</span> Tecnología · Organización · Conocimiento
+        </div>
+
     </div>
+
+   <div class="hero-visual">
+
+    <div class="visual-circle circle-one"></div>
+    <div class="visual-circle circle-two"></div>
+
+    <div class="logo-central">
+        <img src="/img/logo.png" alt="Logo Biblioteca Inteligente">
+    </div>
+
+</div>
+
 </section>
 
-<!-- STATS -->
+<!-- ESTADÍSTICAS -->
 <section class="stats">
+
     <div class="stat">
+        <span class="stat-icon">▤</span>
         <h2>12</h2>
-        <p>Libros</p>
+        <p>Libros registrados</p>
+        <small>Biblioteca digital</small>
     </div>
+
     <div class="stat">
+        <span class="stat-icon">♙</span>
         <h2>45</h2>
-        <p>Usuarios</p>
+        <p>Usuarios registrados</p>
+        <small>Comunidad activa</small>
     </div>
+
     <div class="stat">
+        <span class="stat-icon">↗</span>
         <h2>12</h2>
         <p>Préstamos disponibles</p>
+        <small>Gestión de préstamos</small>
     </div>
+
 </section>
 
-<section class="features">
-    <div class="feature">
-        <div class="icon">📊</div>
-        <h3>Inventario</h3>
-        <p>Control total de libros en tiempo real.</p>
+<!-- CARACTERÍSTICAS -->
+<section class="features-section">
+
+    <div class="section-heading">
+        <span>EXPERIENCIA INTELIGENTE</span>
+        <h2>Todo conectado.<br><span>Todo organizado.</span></h2>
+        <p>Herramientas diseñadas para transformar la administración bibliotecaria.</p>
     </div>
 
-    <div class="feature">
-        <div class="icon">🔒</div>
-        <h3>Seguridad</h3>
-        <p>Usuarios con control y restricciones.</p>
+    <div class="features">
+
+        <a href="inventario.html" class="feature">
+            <div class="feature-icon">▤</div>
+            <span class="feature-number">01 / INVENTARIO</span>
+            <h3>Control total</h3>
+            <p>Administra libros, consulta existencias y mantén tu inventario organizado.</p>
+            <div class="feature-arrow">↗</div>
+        </a>
+
+        <div class="feature">
+            <div class="feature-icon">◈</div>
+            <span class="feature-number">02 / SEGURIDAD</span>
+            <h3>Acceso seguro</h3>
+            <p>Organiza los accesos y administra las funciones de los usuarios.</p>
+            <div class="feature-arrow">↗</div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">ϟ</div>
+            <span class="feature-number">03 / EFICIENCIA</span>
+            <h3>Gestión rápida</h3>
+            <p>Optimiza los procesos de consulta, préstamo y devolución de libros.</p>
+            <div class="feature-arrow">↗</div>
+        </div>
+
     </div>
 
-    <div class="feature">
-        <div class="icon">⚡</div>
-        <h3>Rapidez</h3>
-        <p>Gestión eficiente y sin complicaciones.</p>
-    </div>
 </section>
 
-<section class="activity">
-    <h2>Últimos movimientos</h2>
-    <ul>
-        <li>📚 Juan prestó "el extrangero"</li>
-        <li>➕ Nuevo libro agregado: "El principito"</li>
-        <li>✅ María devolvió un libro</li>
-    </ul>
+<!-- ACTIVIDAD -->
+<section class="activity-section">
+
+    <div class="activity-header">
+        <div>
+            <span>REGISTRO DEL SISTEMA</span>
+            <h2>Últimos movimientos</h2>
+        </div>
+
+        <div class="activity-status">
+            <span></span> Actividad reciente
+        </div>
+    </div>
+
+    <div class="activity">
+
+        <div class="activity-item">
+            <div class="activity-icon">📚</div>
+            <div class="activity-info">
+                <strong>Préstamo registrado</strong>
+                <p>Juan prestó "El extranjero".</p>
+            </div>
+            <span class="activity-label">PRÉSTAMO</span>
+        </div>
+
+        <div class="activity-item">
+            <div class="activity-icon">＋</div>
+            <div class="activity-info">
+                <strong>Nuevo libro agregado</strong>
+                <p>Se agregó "El principito" al inventario.</p>
+            </div>
+            <span class="activity-label">INVENTARIO</span>
+        </div>
+
+        <div class="activity-item">
+            <div class="activity-icon">✓</div>
+            <div class="activity-info">
+                <strong>Devolución completada</strong>
+                <p>María devolvió un libro correctamente.</p>
+            </div>
+            <span class="activity-label">DEVOLUCIÓN</span>
+        </div>
+
+    </div>
+
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
-    <p>© 2026 Biblioteca Inteligente | Proyecto Académico</p>
+
+    <div class="footer-logo">
+        BIBLIOTECA <span>CESDE</span>
+    </div>
+
+    <p>Transformando la gestión del conocimiento.</p>
+
+    <small>© 2026 Biblioteca CESDE | Proyecto Académico</small>
+
 </footer>
 
+<script src="/js/usuario.js"></script>
+
 </body>
+</html>

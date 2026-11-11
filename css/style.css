@@ -53,8 +53,8 @@ button {
 }
 
 .logo img {
-    width: 48px;
-    height: 48px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
 }
 
@@ -1166,4 +1166,35 @@ button {
         padding: 40px 23px;
     }
 
+}
+/* LOGO CENTRAL DEL HERO */
+
+.logo-central {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 250px;
+    height: 250px;
+
+    background: #D8CFC4;
+    border: 3px solid #8C7A6B;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    z-index: 5;
+
+    box-shadow: 0 0 40px rgba(140, 122, 107, 0.35);
+}
+
+.logo-central img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
 }
