@@ -16,7 +16,6 @@ libros.forEach((libro, index) => {
 
     const id = "libro_" + index;
 
-    // Si no existe en LocalStorage, comienza con 15 unidades
     if (inventario[id] === undefined) {
         inventario[id] = {
             titulo: titulo,

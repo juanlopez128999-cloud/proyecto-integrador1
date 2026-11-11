@@ -20,7 +20,7 @@
         function validarAdmin(event) {
             event.preventDefault();
 
-            // Configura estas credenciales para la demostración.
+  
             const adminEmail = "juan128999";
             const adminPass = "juan1022149696*";
 

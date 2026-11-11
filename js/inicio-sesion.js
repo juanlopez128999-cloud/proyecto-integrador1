@@ -17,16 +17,13 @@
 
         });
 
-        
-// ==========================================
-// INICIAR SESIÓN
-// ==========================================
+
 
 document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     e.preventDefault();
 
-    // Obtener los datos ingresados
+
     const emailIngresado = document.getElementById("loginEmail").value.trim();
 
     const claveIngresada = document.getElementById("loginPassword").value.trim();

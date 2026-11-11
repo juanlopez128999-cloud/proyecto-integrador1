@@ -1,8 +1,4 @@
 
-// ==========================================
-// OBTENER USUARIOS DEL LOCAL STORAGE
-// ==========================================
-
 function obtenerUsuarios() {
 
     let usuarios = localStorage.getItem("usuariosBiblioteca");
@@ -14,11 +10,6 @@ function obtenerUsuarios() {
     return JSON.parse(usuarios);
 
 }
-
-
-// ==========================================
-// MOSTRAR USUARIOS EN LA TABLA
-// ==========================================
 
 function mostrarUsuarios() {
 
@@ -32,7 +23,6 @@ function mostrarUsuarios() {
 
     tabla.innerHTML = "";
 
-    // Verificar si existen usuarios
     if (usuarios.length === 0) {
 
         tabla.innerHTML = `
@@ -47,7 +37,7 @@ function mostrarUsuarios() {
 
     }
 
-    // Recorrer todos los usuarios
+
     for (let i = 0; i < usuarios.length; i++) {
 
         let usuario = usuarios[i];
@@ -79,10 +69,6 @@ function mostrarUsuarios() {
 }
 
 
-// ==========================================
-// ACTUALIZAR CONTADORES
-// ==========================================
-
 function actualizarContador() {
 
     let usuarios = obtenerUsuarios();
@@ -113,7 +99,6 @@ function actualizarContador() {
 
     }
 
-    // Actualizar barra de progreso
     let progreso = document.getElementById("userProgress");
 
     if (progreso) {
@@ -126,10 +111,6 @@ function actualizarContador() {
 
 }
 
-
-// ==========================================
-// MOSTRAR GRÁFICA DE PRÉSTAMOS
-// ==========================================
 
 function mostrarGrafica() {
 
@@ -155,10 +136,6 @@ function mostrarGrafica() {
 }
 
 
-// ==========================================
-// CARGAR INFORMACIÓN DEL ADMINISTRADOR
-// ==========================================
-
 function cargarAdministrador() {
 
     mostrarUsuarios();
@@ -170,10 +147,6 @@ function cargarAdministrador() {
 }
 
 
-// ==========================================
-// ACTUALIZAR CUANDO CAMBIE EL LOCAL STORAGE
-// EN OTRA PESTAÑA
-// ==========================================
 
 window.addEventListener("storage", function(event) {
 
@@ -188,9 +161,6 @@ window.addEventListener("storage", function(event) {
 });
 
 
-// ==========================================
-// BOTÓN ACTUALIZAR LISTA
-// ==========================================
 
 function cargarUsuarios() {
 
@@ -199,11 +169,6 @@ function cargarUsuarios() {
     actualizarContador();
 
 }
-
-
-// ==========================================
-// CARGAR CUANDO ABRA LA PÁGINA
-// ==========================================
 
 document.addEventListener("DOMContentLoaded", function() {
 
